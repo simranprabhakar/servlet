@@ -1,0 +1,150 @@
+<html>
+<head>
+    <title>Online Language Learning Platform</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #cbddef; 
+        }
+
+        .container {
+            background-color: #80aae5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2rem; 
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1rem; 
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        .login-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+
+        .login-popup h2 {
+            margin-bottom: 30px;
+            text-align: center; 
+        }
+
+        .login-popup input[type="text"],
+        .login-popup input[type="email"],
+        .login-popup input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .login-popup button {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-popup .options {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .login-popup .options a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Language Learning Platform</h1>
+        <button onclick="showAdminLogin()">Admin Login</button>
+        <button onclick="showInstructorLogin()">Instructor Login</button>
+        <button onclick="showLearnerLogin()">Learner Login</button> 
+    </div>
+
+    <div id="adminLoginForm" class="login-popup">
+        <h2>Admin Login</h2>
+        <input type="email" id="adminEmail" placeholder="Enter Email">
+        <input type="password" id="adminPassword" placeholder="Enter Password">
+        <button onclick="adminLogin()">Login</button>
+        <button onclick="closeLoginPopup('adminLoginForm')">Close</button>
+    </div>
+
+    <div id="instructorLoginForm" class="login-popup">
+        <h2>Instructor Login</h2>
+        <input type="email" id="instructorEmail" placeholder="Enter Email">
+        <input type="password" id="instructorPassword" placeholder="Enter Password">
+        <button onclick="instructorLogin()">Login</button>
+        <button onclick="closeLoginPopup('instructorLoginForm')">Close</button>
+        <div class="options">
+            <a href="#" onclick="showInstructorSignupForm()">Sign Up</a>
+        </div>
+    </div>
+
+    <div id="instructorSignupForm" class="login-popup">
+        <h2>Instructor Signup</h2>
+        <input type="email" id="instructorSignupEmail" placeholder="Enter Email">
+        <input type="password" id="instructorSignupPassword" placeholder="Enter Password">
+        <button onclick="instructorSignup()">Signup</button>
+        <button onclick="closeLoginPopup('instructorSignupForm')">Close</button>
+        <div class="options">
+            <a href="#" onclick="showInstructorLogin()">Login</a>
+        </div>
+    </div>
+
+    <div id="learnerLoginForm" class="login-popup">
+        <h2>Learner Login</h2>
+        <input type="email" id="learnerEmail" placeholder="Enter Email">
+        <input type="password" id="learnerPassword" placeholder="Enter Password">
+        <button onclick="learnerLogin()">Login</button>
+        <button onclick="closeLoginPopup('learnerLoginForm')">Close</button>
+        <div class="options">
+            <a href="#" onclick="showLearnerSignupForm()">Sign Up</a>
+        </div>
+    </div>
+
+    <div id="learnerSignupForm" class="login-popup">
+        <h2>Learner Signup</h2>
+        <input type="email" id="learnerSignupEmail" placeholder="Enter Email">
+        <input type="password" id="learnerSignupPassword" placeholder="Enter Password">
+        <button onclick="learnerSignup()">Signup</button>
+        <button onclick="closeLoginPopup('learnerSignupForm')">Close</button>
+        <div class="options">
+            <a href="#" onclick="showLearnerLogin()">Login</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+
+</body>
+</html>

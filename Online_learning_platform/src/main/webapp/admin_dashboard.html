@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .header button {
+            background-color: #ffc107;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .header button:hover {
+            background-color: #e0a800;
+        }
+
+        .container {
+            margin: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .filter-container select, 
+        .filter-container input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 200px;
+        }
+
+        .filter-container button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .filter-container button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Admin Dashboard</h1>
+        <div>
+            <button onclick="goToAddAdmin()">Add Admin</button>
+            <button onclick="goBackToDashboard()">Logout</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Manage Users</h2>
+        <div class="filter-container">
+            <input type="text" id="userSearch" placeholder="Search by name or email..." oninput="filterUsers()">
+        </div>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+
+        <h2>Manage Content</h2>
+        <div class="filter-container">
+            <input type="text" id="contentSearch" placeholder="Search by title or description..." oninput="filterContent()">
+        </div>
+        <table id="contentTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Redirects to the Add Admin page
+        function goToAddAdmin() {
+            window.location.href = "admin_add.html"; // Change this to the actual path of your Add Admin page
+        }
+
+        // You can define other functions like filtering users or content if needed
+        function filterUsers() {
+            const searchInput = document.getElementById("userSearch").value.toLowerCase();
+            const table = document.getElementById("userTable");
+            const rows = table.getElementsByTagName("tr");
+
+            // Loop through each row and hide those that don't match the search query
+            for (let i = 1; i < rows.length; i++) { // Skip the header row
+                const cells = rows[i].getElementsByTagName("td");
+                const name = cells[1].textContent.toLowerCase();
+                const email = cells[2].textContent.toLowerCase();
+
+                if (name.includes(searchInput) || email.includes(searchInput)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterContent() {
+            const searchInput = document.getElementById("contentSearch").value.toLowerCase();
+            const table = document.getElementById("contentTable");
+            const rows = table.getElementsByTagName("tr");
+
+            // Loop through each row and hide those that don't match the search query
+            for (let i = 1; i < rows.length; i++) { // Skip the header row
+                const cells = rows[i].getElementsByTagName("td");
+                const title = cells[1].textContent.toLowerCase();
+                const description = cells[2].textContent.toLowerCase();
+
+                if (title.includes(searchInput) || description.includes(searchInput)) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+
+        // Placeholder function for logout (if needed)
+        function goBackToDashboard() {
+            window.location.href = "index.html"; // Change this to the actual dashboard page
+        }
+    </script>
+</body>
+</html>
